@@ -63,6 +63,13 @@
         "jestConfig": "apps/gogl/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/gogl/cypress.json",
+        "testingType": "component"
+      }
     }
   },
   "tags": []

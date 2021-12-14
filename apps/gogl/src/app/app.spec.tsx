@@ -1,17 +1,16 @@
-import { render } from '@testing-library/react';
+import * as React from 'react'
+import { mount } from '@cypress/react'
+import App from './App'
+// using the following import will break the build
+//import styled from 'styled-components/macro'
+// with this import it works
+import styled from 'styled-components'
 
-import App from './app';
+it('Button', () => {
+  mount(<Container><App /></Container>)
+cy.get(".text-container > a").click()
+cy.contains("up and running")
+})
 
-describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<App />);
-
-    expect(baseElement).toBeTruthy();
-  });
-
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-
-    expect(getByText(/Welcome gogl/gi)).toBeTruthy();
-  });
-});
+const Container = styled.div`
+`
