@@ -1,0 +1,28 @@
+{
+  "root": "apps/gogl-e2e",
+  "sourceRoot": "apps/gogl-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/gogl-e2e/cypress.json",
+        "devServerTarget": "gogl:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "gogl:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gogl-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["gogl"]
+}

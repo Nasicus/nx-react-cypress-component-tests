@@ -1,0 +1,69 @@
+{
+  "root": "apps/gogl",
+  "sourceRoot": "apps/gogl/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/gogl",
+        "index": "apps/gogl/src/index.html",
+        "baseHref": "/",
+        "main": "apps/gogl/src/main.tsx",
+        "polyfills": "apps/gogl/src/polyfills.ts",
+        "tsConfig": "apps/gogl/tsconfig.app.json",
+        "assets": ["apps/gogl/src/favicon.ico", "apps/gogl/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/gogl/src/environments/environment.ts",
+              "with": "apps/gogl/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "gogl:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "gogl:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gogl/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/gogl"],
+      "options": {
+        "jestConfig": "apps/gogl/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

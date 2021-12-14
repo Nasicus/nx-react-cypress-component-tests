@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "gogl": "apps/gogl",
+    "gogl-e2e": "apps/gogl-e2e"
+  }
+}
